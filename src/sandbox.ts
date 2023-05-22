@@ -1,24 +1,42 @@
 /**
  * --------------------------------
- *      Better Workflow & tsconfig
+ *     #8 Function Basics
  * --------------------------------
  * 
- * to generate tsconfig.json file:
- * > tsc --init
  * 
- * in tsconfig.json file:
- * 
- * "outDir": "./public"
- * "rootDir": "./src",
- * 
- *  to compile files only inside the src folder add:
- * "include": ["src"]
- * 
- * run in bash:
- * > tsc
- * 
- * to compile automaticaly:
- * > tsc -w
  * 
  */
-console.log('test');
+
+let greetOne = () => {
+    console.log('hello');
+}
+// greetOne = 'hello'; // err
+// --------------------------------
+
+
+let greet: Function;
+
+greet = () => {
+    console.log('hello, again');
+}
+
+// ? --> optional parametr, last one
+// or
+// string = 10 --> default value
+const add = (a: number, b: number, c: number | string = 10): void => {
+    // when nothing to return --> (): void
+    console.log(a + b);
+    console.log(c)
+}
+
+add(5, 10, '20');
+// add(5, '10'); // err
+// --------------------------------
+
+
+const minus = (a: number, b: number): number => {
+    return a + b;
+}
+
+let result = minus(10, 7); // automatically return a function type --> number or we can declare func return type (): number.
+// result = 'result string'; // err
