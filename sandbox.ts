@@ -1,21 +1,19 @@
-/**
- * Compiling TypeScript:
- * 
- * in bash:
- * > tsc sandbox.ts sandbox.js
- * > tsc sandbox.ts // with the same name
- * 
- * to run it ones
- * > tsc sandbox.ts -w
- * 
- */
+let character = 'mario';
+let age = 30;
+let isBlackBelt = false;
 
-const character = 'luigi';
-console.log(character);
+// character = 20; // error - not a 'string'
+character = 'luigi';
 
-const inputs = document.querySelectorAll('input');
-console.log(inputs)
+// age = 'yoshi'; // error - Type 'string' is not assignable to type 'number'.
+age = 40;
 
-inputs.forEach(input => {
-    console.log(input)
-})
+// isBlackBelt = 'yes'; // error - Type 'string' is not assignable to type 'boolean'.
+isBlackBelt = true;
+
+const circ = (diameter: number) => {
+    return diameter * Math.PI;
+}
+
+// console.log(circ('hello')); // error
+console.log(circ(7.5));
