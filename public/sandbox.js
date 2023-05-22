@@ -1,34 +1,15 @@
 "use strict";
 /**
  * --------------------------------
- *     #8 Function Basics
+ *     #9 Type Aliases
  * --------------------------------
  *
  *
  *
  */
-let greetOne = () => {
-    console.log('hello');
+const logDetails = (uid, item) => {
+    console.log(`${item} has a uid of ${uid}`);
 };
-// greetOne = 'hello'; // err
-// --------------------------------
-let greet;
-greet = () => {
-    console.log('hello, again');
+const greet = (user) => {
+    console.log(`${user.name} says hello!`);
 };
-// ? --> optional parametr, last one
-// or
-// string = 10 --> default value
-const add = (a, b, c = 10) => {
-    // when nothing to return --> (): void
-    console.log(a + b);
-    console.log(c);
-};
-add(5, 10, '20');
-// add(5, '10'); // err
-// --------------------------------
-const minus = (a, b) => {
-    return a + b;
-};
-let result = minus(10, 7); // automatically return a function type --> number or we can declare func return type (): number.
-// result = 'result string'; // err

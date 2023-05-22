@@ -1,42 +1,28 @@
 /**
  * --------------------------------
- *     #8 Function Basics
+ *     #9 Type Aliases
  * --------------------------------
  * 
  * 
  * 
  */
 
-let greetOne = () => {
-    console.log('hello');
-}
-// greetOne = 'hello'; // err
-// --------------------------------
 
+// const logDetails = (uid: string | number, item: string) => {
+//     console.log(`${item} has a uid of ${uid}`);
+// }
 
-let greet: Function;
+// const greet = (user: {name: string, uid: string | number}) => {
+//     console.log(`${user.name} says hello!`);
+// }
 
-greet = () => {
-    console.log('hello, again');
-}
+type StringOrNum = string | number;
+type objWithName = { name: string, uid: StringOrNum };
 
-// ? --> optional parametr, last one
-// or
-// string = 10 --> default value
-const add = (a: number, b: number, c: number | string = 10): void => {
-    // when nothing to return --> (): void
-    console.log(a + b);
-    console.log(c)
+const logDetails = (uid: StringOrNum, item: string) => {
+    console.log(`${item} has a uid of ${uid}`);
 }
 
-add(5, 10, '20');
-// add(5, '10'); // err
-// --------------------------------
-
-
-const minus = (a: number, b: number): number => {
-    return a + b;
+const greet = (user: objWithName) => {
+    console.log(`${user.name} says hello!`);
 }
-
-let result = minus(10, 7); // automatically return a function type --> number or we can declare func return type (): number.
-// result = 'result string'; // err
