@@ -1,40 +1,52 @@
+// explicit types
+let character: string;
+let age: number;
+let isLoggedIn: boolean;
+
+// age = 'mario'; // err
+age = 30;
+
+// isLoggedIn = 25; // err
+isLoggedIn = true;
+// ------------------------------------
+
 // arrays
+let ninjas: string[];
+// the best practice to define at the start of the code an empty array:
+let ninjas: string[] = [];
+// then, we can do this:
+ninjas.push('mario');
 
-let names = ['luigi', 'mario', 'yoshi'];
-// when we declared an array with one type - the array can have only one type
-names.push('toad');
-// names.push(3); // error
-// name[0] = 3; // error
-// names = 'mario'; // err
+// ninjas = [10, 23]; // err
+ninjas = ['mario', 'shaun']
+// ------------------------------------
 
-let numbers = [10, 20, 30, 40];
-numbers.push(25);
-// numbers.push('shaun'); // err
-// numbers[0] = 'shaun'; // err
+// union types
+let mixed: (string|number)[] = []; // () --> needs before --> []
+mixed.push(20);
+// mixed.push(false); // err
 
-let mixed = ['ken', 4, 'chun-li', 8, 9];
-mixed.push('ryu');
-mixed.push(10);
-mixed[0] = 3;
+let mixed: (string|number|boolean)[] = [];
+mixed.push(false);
+// ------------------------------------
 
+let uid: string|number; // no need ()
+uid = '123';
+uid = 123;
+// uid = true; // err
+// ------------------------------------
 
 // objects
+let ninjaOne: object;
+ninjaOne = { name: 'mario', age: 30 };
+// ninjaOne = 'hello'; // err
+// ninjaOne = []; // err --> it could be, because of an array type of an object, but it won't work with an already declared an object before
 
-let ninja = {
-    name: 'mario',
-    belt: 'black',
-    age: 30
+let ninjaTwo: {
+    name: string,
+    age: number,
+    beltColor: string
 }
 
-ninja.age = 40;
-ninja.name = 'ryu';
-// ninja.age = '30'; // err
-// ninja.skills = ['fighting', 'sneaking']; // don't exist obj property
-
-// modify an object
-ninja = {
-    name: 'yoshi', // must to be the same type
-    belt: 'orange', // must to be the same property order
-    age: 40, // must to be here
-    // skills: ['fighting', 'sneaking'] // we can NOT add new property
-}
+ninjaTwo = { name: 'yoshi', age: 20, beltColor: 'black' };
+// ninjaTwo = { name: 'yoshi', age: 20, beltColor: 'black', skills: 'fluing' }; // err --> not existing argument

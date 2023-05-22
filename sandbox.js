@@ -1,31 +1,38 @@
+// explicit types
+var character;
+var age;
+var isLoggedIn;
+// age = 'mario'; // err
+age = 30;
+// isLoggedIn = 25; // err
+isLoggedIn = true;
+// ------------------------------------
 // arrays
-var names = ['luigi', 'mario', 'yoshi'];
-// when we declared an array with one type - the array can have only one type
-names.push('toad');
-// names.push(3); // error
-// name[0] = 3; // error
-// names = 'mario'; // err
-var numbers = [10, 20, 30, 40];
-numbers.push(25);
-// numbers.push('shaun'); // err
-// numbers[0] = 'shaun'; // err
-var mixed = ['ken', 4, 'chun-li', 8, 9];
-mixed.push('ryu');
-mixed.push(10);
-mixed[0] = 3;
+var ninjas;
+// the best practice to define at the start of the code an empty array:
+var ninjas = [];
+// then, we can do this:
+ninjas.push('mario');
+// ninjas = [10, 23]; // err
+ninjas = ['mario', 'shaun'];
+// ------------------------------------
+// union types
+var mixed = []; // () --> needs before --> []
+mixed.push(20);
+// mixed.push(false); // err
+var mixed = [];
+mixed.push(false);
+// ------------------------------------
+var uid; // no need ()
+uid = '123';
+uid = 123;
+// uid = true; // err
+// ------------------------------------
 // objects
-var ninja = {
-    name: 'mario',
-    belt: 'black',
-    age: 30
-};
-ninja.age = 40;
-ninja.name = 'ryu';
-// ninja.age = '30'; // err
-// ninja.skills = ['fighting', 'sneaking']; // don't exist obj property
-// modify an object
-ninja = {
-    name: 'yoshi',
-    belt: 'orange',
-    age: 40
-};
+var ninjaOne;
+ninjaOne = { name: 'mario', age: 30 };
+// ninjaOne = 'hello'; // err
+// ninjaOne = []; // err --> it could be, because of an array type of an object, but it won't work with an already declared an object before
+var ninjaTwo;
+ninjaTwo = { name: 'yoshi', age: 20, beltColor: 'black' };
+// ninjaTwo = { name: 'yoshi', age: 20, beltColor: 'black', skills: 'fluing' }; // err --> not existing argument
