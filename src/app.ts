@@ -1,6 +1,6 @@
 /**
  * --------------------------------
- *     #18 Intro to Generics
+ *     #19 Enums
  * --------------------------------
  * 
  * 
@@ -38,38 +38,31 @@ form.addEventListener('submit', (e: Event) => {
 })
 
 // ----------------------------
-// GENERICS
-//      -- reusable part of code to use with diferent types;
+// ENUMS
+//      -- store keywords with numeric value;
 
-const addUID = <T extends {name: string}>(obj: T) => { // or <T extends object>
-    let uid = Math.floor(Math.random() * 100);
-    return {...obj, uid};
-}
+enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON };
 
-let docOne = addUID({name: 'yoshi', age: 40});
-// let docTwo = addUID('hello'); // err
-
-console.log(docOne);
-console.log(docOne.name);
-
-
-// with interfaces
-interface Resource<T> { // generic Type --> <T>
+interface Resource<T> {
     uid: number;
-    resourceName: string;
+    resourceType: ResourceType;
     data: T;
 }
 
-const docThree: Resource<object> = {
+const docOne: Resource<object> = {
     uid: 1,
-    resourceName: 'person',
-    data: {name: 'shaun'}
+    resourceType: ResourceType.BOOK,
+    data: {title: 'name of the wind'}
 }
 
-const docFour: Resource<string[]> = {
-    uid: 2,
-    resourceName: 'shoppingList',
-    data: ['bread', 'milk']
+const docTwo: Resource<object> = {
+    uid: 10,
+    resourceType: ResourceType.PERSON,
+    data: {name: 'yoshi'}
 }
 
-console.log(docThree, docFour)
+console.log(docOne, docTwo);
+// ENUMS HAS a specific index number:
+
+// {uid: 1, resourceType: 0, data: {…}}
+// {uid: 10, resourceType: 4, data: {…}}
