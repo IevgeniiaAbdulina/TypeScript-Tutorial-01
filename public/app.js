@@ -1,24 +1,36 @@
 "use strict";
 /**
  * --------------------------------
- *     #11 The DOM & Type Casting
+ *     #12 Classes
  * --------------------------------
  *
  *
  *
  */
-const anchor = document.querySelector('a');
-// console.log(anchor.href); // err --> possibly 'null'
-// if(anchor) {
-//  console.log(anchor.href); // get a link
-// }
-//  or
-const anchorOne = document.querySelector('a'); // add [ ! ] --> NOT a null
-console.log(anchorOne.href);
-// --------------------------------
-// const form = document.querySelector('form')!;
-const form = document.querySelector('.new-item-form'); // cast a type of element --> as - never be a null
-// console.log(fotmOne.children);
+// classes
+class Invoice {
+    constructor(c, d, a) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
+    // methods
+    format() {
+        return `${this.client} owes $ ${this.amount} for ${this.details}`;
+    }
+}
+const invOne = new Invoice('mario', 'work on the web mario', 250);
+const invTwo = new Invoice('luigi', 'work on the web luigi', 300);
+// console.log(invOne, invTwo);
+let invoices = [];
+invoices.push(invOne);
+invoices.push(invTwo);
+console.log(invoices);
+invOne.client = 'yoshi';
+invTwo.amount = 400;
+console.log(invOne, invTwo);
+// -------------------------------------
+const form = document.querySelector('.new-item-form');
 // inputs
 const type = document.querySelector('#type');
 const tofrom = document.querySelector('#tofrom');

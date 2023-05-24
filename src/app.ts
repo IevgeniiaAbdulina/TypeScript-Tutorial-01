@@ -1,30 +1,48 @@
 /**
  * --------------------------------
- *     #11 The DOM & Type Casting
+ *     #12 Classes
  * --------------------------------
  * 
  * 
  * 
  */
 
-const anchor = document.querySelector('a');
+// classes
+class Invoice {
+    client: string;
+    details: string;
+    amount: number;
 
-// console.log(anchor.href); // err --> possibly 'null'
+    constructor(c: string, d: string, a: number) {
+        this.client = c;
+        this.details = d;
+        this.amount = a;
+    }
 
-// if(anchor) {
-//  console.log(anchor.href); // get a link
-// }
+    // methods
+    format() {
+        return `${this.client} owes $ ${this.amount} for ${this.details}`;
+    }
+}
 
-//  or
-const anchorOne = document.querySelector('a')!; // add [ ! ] --> NOT a null
-console.log(anchorOne.href);
+const invOne = new Invoice('mario', 'work on the web mario', 250);
+const invTwo = new Invoice('luigi', 'work on the web luigi', 300);
 
-// --------------------------------
+// console.log(invOne, invTwo);
+let invoices: Invoice[] = [];
+invoices.push(invOne);
+invoices.push(invTwo);
 
-// const form = document.querySelector('form')!;
-const form = document.querySelector('.new-item-form') as HTMLFormElement; // cast a type of element --> as - never be a null
+console.log(invoices);
 
-// console.log(fotmOne.children);
+invOne.client = 'yoshi';
+invTwo.amount = 400;
+
+console.log(invOne, invTwo);
+
+// -------------------------------------
+
+const form = document.querySelector('.new-item-form') as HTMLFormElement;
 
 // inputs
 const type = document.querySelector('#type') as HTMLSelectElement;
