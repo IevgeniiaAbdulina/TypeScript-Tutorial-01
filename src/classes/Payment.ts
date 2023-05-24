@@ -1,6 +1,5 @@
 import { HasFormatter } from '../interfaces/HasFormatter.js';
 
-// classes
 export class Payment implements HasFormatter {
     constructor(
         readonly recipient: string,

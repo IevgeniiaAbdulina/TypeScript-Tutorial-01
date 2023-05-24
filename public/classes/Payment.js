@@ -1,4 +1,3 @@
-// classes
 export class Payment {
     constructor(recipient, details, amount) {
         this.recipient = recipient;
