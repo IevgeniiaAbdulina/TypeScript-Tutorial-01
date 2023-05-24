@@ -1,6 +1,6 @@
 /**
  * --------------------------------
- *     #17 Rendering an HTML Template
+ *     #18 Intro to Generics
  * --------------------------------
  *
  *
@@ -29,3 +29,25 @@ form.addEventListener('submit', (e) => {
     }
     list.render(doc, type.value, 'end');
 });
+// ----------------------------
+// GENERICS
+//      -- reusable part of code to use with diferent types;
+const addUID = (obj) => {
+    let uid = Math.floor(Math.random() * 100);
+    return Object.assign(Object.assign({}, obj), { uid });
+};
+let docOne = addUID({ name: 'yoshi', age: 40 });
+// let docTwo = addUID('hello'); // err
+console.log(docOne);
+console.log(docOne.name);
+const docThree = {
+    uid: 1,
+    resourceName: 'person',
+    data: { name: 'shaun' }
+};
+const docFour = {
+    uid: 2,
+    resourceName: 'shoppingList',
+    data: ['bread', 'milk']
+};
+console.log(docThree, docFour);

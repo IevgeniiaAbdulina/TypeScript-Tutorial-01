@@ -1,6 +1,6 @@
 /**
  * --------------------------------
- *     #17 Rendering an HTML Template
+ *     #18 Intro to Generics
  * --------------------------------
  * 
  * 
@@ -36,3 +36,40 @@ form.addEventListener('submit', (e: Event) => {
 
     list.render(doc, type.value, 'end');
 })
+
+// ----------------------------
+// GENERICS
+//      -- reusable part of code to use with diferent types;
+
+const addUID = <T extends {name: string}>(obj: T) => { // or <T extends object>
+    let uid = Math.floor(Math.random() * 100);
+    return {...obj, uid};
+}
+
+let docOne = addUID({name: 'yoshi', age: 40});
+// let docTwo = addUID('hello'); // err
+
+console.log(docOne);
+console.log(docOne.name);
+
+
+// with interfaces
+interface Resource<T> { // generic Type --> <T>
+    uid: number;
+    resourceName: string;
+    data: T;
+}
+
+const docThree: Resource<object> = {
+    uid: 1,
+    resourceName: 'person',
+    data: {name: 'shaun'}
+}
+
+const docFour: Resource<string[]> = {
+    uid: 2,
+    resourceName: 'shoppingList',
+    data: ['bread', 'milk']
+}
+
+console.log(docThree, docFour)
