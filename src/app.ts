@@ -1,6 +1,6 @@
 /**
  * --------------------------------
- *     #19 Enums
+ *     #20 Tuples
  * --------------------------------
  * 
  * 
@@ -26,43 +26,34 @@ const list = new ListTemplate(ul);
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault();
 
+    let values: [string, string, number];
+    values = [tofrom.value, details.value, amount.valueAsNumber];
+
     let doc: HasFormatter;
 
     if(type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     } else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
 
     list.render(doc, type.value, 'end');
 })
 
 // ----------------------------
-// ENUMS
-//      -- store keywords with numeric value;
+// TUPLES
+//  -- we CAN NOT change a position in tuple
 
-enum ResourceType { BOOK, AUTHOR, FILM, DIRECTOR, PERSON };
+let arr = ['err', 25, true];
+arr[0] = false; // we know a position in array
 
-interface Resource<T> {
-    uid: number;
-    resourceType: ResourceType;
-    data: T;
-}
+// let tup: [string, number, boolean] = [40, 25, true]; // error
 
-const docOne: Resource<object> = {
-    uid: 1,
-    resourceType: ResourceType.BOOK,
-    data: {title: 'name of the wind'}
-}
+let tup: [string, number, boolean] = ['err', 25, true];
 
-const docTwo: Resource<object> = {
-    uid: 10,
-    resourceType: ResourceType.PERSON,
-    data: {name: 'yoshi'}
-}
+// tup[0] = false; // err --> not allowde to change a type
+tup[0] = 'notError'; // can change value
 
-console.log(docOne, docTwo);
-// ENUMS HAS a specific index number:
-
-// {uid: 1, resourceType: 0, data: {…}}
-// {uid: 10, resourceType: 4, data: {…}}
+let student: [string, number];
+// student = [123456, 'chun-li']; // err
+student = ['chun-li', 123456];

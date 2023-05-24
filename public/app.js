@@ -1,6 +1,6 @@
 /**
  * --------------------------------
- *     #19 Enums
+ *     #20 Tuples
  * --------------------------------
  *
  *
@@ -20,38 +20,26 @@ const ul = document.querySelector('ul');
 const list = new ListTemplate(ul);
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    let values;
+    values = [tofrom.value, details.value, amount.valueAsNumber];
     let doc;
     if (type.value === 'invoice') {
-        doc = new Invoice(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Invoice(...values);
     }
     else {
-        doc = new Payment(tofrom.value, details.value, amount.valueAsNumber);
+        doc = new Payment(...values);
     }
     list.render(doc, type.value, 'end');
 });
 // ----------------------------
-// ENUMS
-//      -- store keywords with numeric value;
-var ResourceType;
-(function (ResourceType) {
-    ResourceType[ResourceType["BOOK"] = 0] = "BOOK";
-    ResourceType[ResourceType["AUTHOR"] = 1] = "AUTHOR";
-    ResourceType[ResourceType["FILM"] = 2] = "FILM";
-    ResourceType[ResourceType["DIRECTOR"] = 3] = "DIRECTOR";
-    ResourceType[ResourceType["PERSON"] = 4] = "PERSON";
-})(ResourceType || (ResourceType = {}));
-;
-const docOne = {
-    uid: 1,
-    resourceType: ResourceType.BOOK,
-    data: { title: 'name of the wind' }
-};
-const docTwo = {
-    uid: 10,
-    resourceType: ResourceType.PERSON,
-    data: { name: 'yoshi' }
-};
-console.log(docOne, docTwo);
-// ENUMS HAS a specific index number:
-// {uid: 1, resourceType: 0, data: {…}}
-// {uid: 10, resourceType: 4, data: {…}}
+// TUPLES
+//  -- we CAN NOT change a position in tuple
+let arr = ['err', 25, true];
+arr[0] = false; // we know a position in array
+// let tup: [string, number, boolean] = [40, 25, true]; // error
+let tup = ['err', 25, true];
+// tup[0] = false; // err --> not allowde to change a type
+tup[0] = 'notError'; // can change value
+let student;
+// student = [123456, 'chun-li']; // err
+student = ['chun-li', 123456];
