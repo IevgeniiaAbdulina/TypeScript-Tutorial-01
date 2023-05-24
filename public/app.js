@@ -1,20 +1,33 @@
 "use strict";
 /**
  * --------------------------------
- *     #12 Classes
+ *     #13 Public, Private & Readonly
  * --------------------------------
  *
  *
  *
  */
 // classes
+// class Invoice {
+//     readonly client: string; // read-only inside|outside the class, can NOT change value
+//     private details: string; // CAN change ONLY INSIDE the class
+//     public amount: number; // default, CAN read|change inside|outside the class
+//     constructor(c: string, d: string, a: number) {
+//         this.client = c;
+//         this.details = d;
+//         this.amount = a;
+//     }
+//     // methods
+//     format() {
+//         return `${this.client} owes $ ${this.amount} for ${this.details}`;
+//     }
+// }
 class Invoice {
-    constructor(c, d, a) {
-        this.client = c;
-        this.details = d;
-        this.amount = a;
+    constructor(client, details, amount) {
+        this.client = client;
+        this.details = details;
+        this.amount = amount;
     }
-    // methods
     format() {
         return `${this.client} owes $ ${this.amount} for ${this.details}`;
     }
@@ -29,6 +42,9 @@ console.log(invoices);
 invOne.client = 'yoshi';
 invTwo.amount = 400;
 console.log(invOne, invTwo);
+invoices.forEach(inv => {
+    console.log(inv.client, inv.amount, inv.format());
+});
 // -------------------------------------
 const form = document.querySelector('.new-item-form');
 // inputs
